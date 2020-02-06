@@ -2,6 +2,7 @@
 title: 多终端更新本博客向导
 date: 2020-02-05 14:55:47
 tags:
+category: evlpsrfc
 ---
 
 ## 前言

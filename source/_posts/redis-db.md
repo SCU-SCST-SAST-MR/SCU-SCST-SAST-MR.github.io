@@ -2,7 +2,7 @@
 title: Redis 数据结构
 date: 2020-02-05 17:21:35
 tags: Redis
-author: lengyubingcheng
+category: lengyubingcheng
 ---
 
 ## Redis 数据结构简介
