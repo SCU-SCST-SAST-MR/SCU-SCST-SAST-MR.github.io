@@ -10,6 +10,8 @@ tags:
 
 在操作之前需要确保环境（Node.js、Git、Hexo、hexo-deployer-git）已经配置完毕。
 
+<!--more-->
+
 ## 配置方法
 
 首先将博客必要文件 pull 到本地（注意 clone 的 branch 是 hexo 而不是 master）
