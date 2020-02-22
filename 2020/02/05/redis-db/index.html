@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>Redis 数据结构 | 苏大计科科协科研部</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Redis 数据结构简介Redis 可以存储键（key）与 5 种不同类型的值（value）之间的映射，这5中不同数据结构类型分别为：STRING、LIST、SET、HASH、ZSET。 以下介绍均采用 redis-cli 交互式客户端。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Redis 数据结构">
+<meta property="og:url" content="http://scu-scst-sast-mr.github.io/2020/02/05/redis-db/index.html">
+<meta property="og:site_name" content="苏大计科科协科研部">
+<meta property="og:description" content="Redis 数据结构简介Redis 可以存储键（key）与 5 种不同类型的值（value）之间的映射，这5中不同数据结构类型分别为：STRING、LIST、SET、HASH、ZSET。 以下介绍均采用 redis-cli 交互式客户端。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-05T09:21:35.000Z">
+<meta property="article:modified_time" content="2020-02-22T15:34:18.749Z">
+<meta property="article:tag" content="Redis">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="苏大计科科协科研部" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">苏大计科科协科研部</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SCU-SCST-SAST-MR.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-redis-db" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/05/redis-db/" class="article-date">
+  <time datetime="2020-02-05T09:21:35.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/lengyubingcheng/">lengyubingcheng</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Redis 数据结构
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="Redis-数据结构简介"><a href="#Redis-数据结构简介" class="headerlink" title="Redis 数据结构简介"></a>Redis 数据结构简介</h2><p>Redis 可以存储键（key）与 5 种不同类型的值（value）之间的映射，这5中不同数据结构类型分别为：STRING、LIST、SET、HASH、ZSET。</p>
+<p>以下介绍均采用 redis-cli 交互式客户端。</p>
+<a id="more"></a>
+
+<ol>
+<li><h3 id="STRING（字符串）"><a href="#STRING（字符串）" class="headerlink" title="STRING（字符串）"></a>STRING（字符串）</h3><p>可以存储字符串、整数或者浮点数。</p>
+<h4 id="增："><a href="#增：" class="headerlink" title="增："></a>增：</h4><p>​    <code>set key-name value</code></p>
+<h4 id="删："><a href="#删：" class="headerlink" title="删："></a>删：</h4><p>​    <code>del key-name</code>                  – 若不存在，则返回 0。</p>
+<h4 id="查："><a href="#查：" class="headerlink" title="查："></a>查：</h4><p>​    <code>get key-name</code>                  – 若不存在，则返回 nil。</p>
+<h4 id="改："><a href="#改：" class="headerlink" title="改："></a>改：</h4><h5 id="自增自减："><a href="#自增自减：" class="headerlink" title="自增自减："></a>自增自减：</h5><p><code>incr key-name</code>              – 将键存储的值加上 1             </p>
+<p><code>decr key-name</code>                 – 将键存储的值减去 1</p>
+<p><code>incrby key-name amount</code>        – 将键存储的值加上整数 amount</p>
+<p><code>decrby key-name amount</code>        – 将键存储的值减去整数 amount</p>
+<p><code>incrbyfloat key-name amount</code>   – 将键存储的值加上浮点数 amount<br>注：当用户存储值的时候，如果可以被解释为十进制整数或者浮点数，则 Redis 会允许用户对其进行上述操作。返回修改后的数值。</p>
+<h5 id="处理字串和二进制："><a href="#处理字串和二进制：" class="headerlink" title="处理字串和二进制："></a>处理字串和二进制：</h5><p><code>append key-name value</code>         – 追加在值的末尾</p>
+<p><code>getrange key-name start end</code>   – 获取子字符串，闭区间</p>
+<p><code>setrange key-name offset value</code> – 将从偏移量 offset 开始的子串设置为 value</p>
+<p><code>getbit key-name offset</code>         – 将字符看作二进制串，获取串中偏移量 offset 的二进制值</p>
+<p><code>setbit key-name offset value</code>   – 将串中偏移量offset的二进制值设置为value</p>
+<p><code>bitcount key-name [start end]</code>  –统计二进制串中1的数量，默认为整串，子串可选</p>
+<p><code>bitop opration dest-key key-name [keyname ...]</code> –对多个串进行按位运算操作，保存在 dest-key 中</p>
+<hr>
+</li>
+</ol>
+<ol start="2">
+<li><h3 id="LIST（列表）"><a href="#LIST（列表）" class="headerlink" title="LIST（列表）"></a>LIST（列表）</h3><h4 id="增：-1"><a href="#增：-1" class="headerlink" title="增："></a>增：</h4><p><code>lpush/rpush key-name value</code>   – 将给定值推入列表的左/右端</p>
+<h4 id="删：-1"><a href="#删：-1" class="headerlink" title="删："></a>删：</h4><p><code>lpop/rpop key-name</code>           – 将列表的左/右端弹出一个值，并返回被弹出的值</p>
+<h4 id="查：-1"><a href="#查：-1" class="headerlink" title="查："></a>查：</h4><p><code>lrange key-name start end</code>    – 获取列表在给定范围内的所有值：<br>若结束为 -1，则取到结尾。</p>
+<p><code>lindex key-name index</code>        – 获取列表给定位置上的值：</p>
+<h4 id="改：-1"><a href="#改：-1" class="headerlink" title="改："></a>改：</h4><p><code>ltrim key-name start end</code>     – 修剪，保留[start,end]区间的元素，闭区间</p>
+<h5 id="阻塞式弹出元素："><a href="#阻塞式弹出元素：" class="headerlink" title="阻塞式弹出元素："></a>阻塞式弹出元素：</h5><p><code>blpop key-name [key-name..] timeout</code>    – 从第一个非空列表中弹出最左端元素，或者在 timeout 秒内阻塞并等待可弹出的元素出现</p>
+<p><code>brpop key-name [key-name..] timeout</code>    – 从第一个非空列表中弹出最右端元素，或者在 timeout 秒内阻塞并等待可弹出的元素出现</p>
+<h5 id="列表间移动元素："><a href="#列表间移动元素：" class="headerlink" title="列表间移动元素："></a>列表间移动元素：</h5><p><code>rpoplpush source-key dest-key</code>          – 从 source-key 列表中弹出位于最右边的元素，推到 dest-key 的最左端，并返回这个元素</p>
+<p><code>brpoplpush source-key dest-key timeout</code> – 从 source-key 列表中弹出位于最右边的元素，推到 dest-key 的最左端，并返回这个元素；若前者为空，则阻塞 timeout 秒等待可弹出元素的出现。</p>
+<hr>
+</li>
+</ol>
+<ol start="3">
+<li><h3 id="SET（集合）"><a href="#SET（集合）" class="headerlink" title="SET（集合）"></a>SET（集合）</h3><p>列表可以存储相同的值，集合通过散列表保证存储的值各不相同。</p>
+<h4 id="增：-2"><a href="#增：-2" class="headerlink" title="增："></a>增：</h4><p><code>sadd key-name item [item...]</code>    –   返回正确添加的数量</p>
+<h4 id="删：-2"><a href="#删：-2" class="headerlink" title="删："></a>删：</h4><p><code>srem key-name item [item...]</code>    – 返回删除的数量</p>
+<p><code>spop key-name</code>               – 随机删除一个元素，并返回该元素</p>
+<h4 id="查：-2"><a href="#查：-2" class="headerlink" title="查："></a>查：</h4><p><code>smembers key-name</code>             – 返回所有元素</p>
+<p><code>sismember key-name</code>            – 检查元素是否在集合中,返回 1 存在；0 不存在。</p>
+<p><code>srandmember key-name [count]</code>      –返回集合中 count 的<strong>绝对值</strong>个元素，若 count为<strong>正数</strong>，<strong>不会重复</strong>，即使超过集合长度，只返回<strong>整个集合</strong>，不会重复；若为<strong>负数</strong>，无论 count 多大，都<strong>可能出现重复</strong>。</p>
+<p><code>scard key-name</code>                 – 返回集合元素的数量 </p>
+<h4 id="改：-2"><a href="#改：-2" class="headerlink" title="改："></a>改：</h4><p><code>smove source-key dest-key item</code>  –从原集合中删除 item 元素，并将 item 添加到目标集合</p>
+<h4 id="其他："><a href="#其他：" class="headerlink" title="其他："></a>其他：</h4><h5 id="交集运算："><a href="#交集运算：" class="headerlink" title="交集运算："></a>交集运算：</h5><p><code>sinter key-name [key-name]</code> –返回存在于所有集合中的元素</p>
+<p><code>sdinterstore dest-key key-name [key-name]</code>–同上，并且存储在 dest-key 中</p>
+<h5 id="并集运算："><a href="#并集运算：" class="headerlink" title="并集运算："></a>并集运算：</h5><p><code>sunion key-name [key-name]</code> –返回存在于至少一个集合中的元素 </p>
+<p><code>sunionstore dest-key key-name [key-name]</code>–同上，并且存储在 dest-key 中</p>
+<h5 id="差集运算"><a href="#差集运算" class="headerlink" title="差集运算:"></a>差集运算:</h5><p><code>sdiff key-name [key-name]</code> –返回存在于第一个集合，但不存在其他集合中的元素</p>
+<p><code>sdiffstore dest-key key-name [key-name]</code>–同上，并且存储在 dest-key 中</p>
+</li>
+</ol>
+<hr>
+<ol start="4">
+<li><h3 id="HASH（散列）"><a href="#HASH（散列）" class="headerlink" title="HASH（散列）"></a>HASH（散列）</h3><p>在很多方面像缩小版的 redis，某些方面可以看成<strong>关系型数据库</strong>的<strong>行</strong>，或者<strong>文档数据库</strong>中的<strong>文档</strong>。</p>
+<h4 id="增：-3"><a href="#增：-3" class="headerlink" title="增："></a>增：</h4><p>   <code>hset key-name key value</code>              – 返回 1 成功；0 失败（已存在）</p>
+<p>   <code>hmset key-name key value [key value]</code>    –为散列添加多个键值对</p>
+<h4 id="删：-3"><a href="#删：-3" class="headerlink" title="删："></a>删：</h4><p>  <code>hdel key-name keyh</code>                 – 返回 1 成功；0 失败（不存在）</p>
+<p>  <code>hmdel key-name key value [key value]</code>   —删除多个键值对，并返回正确删除的个数</p>
+<h4 id="查：-3"><a href="#查：-3" class="headerlink" title="查："></a>查：</h4><p>  <code>hgetall key-name</code>                  – 返回所有元素</p>
+<p>  <code>hget key-name key</code>                – 返回指定散列键的值</p>
+<p>  <code>hmget key-name key [key]</code>      – 返回多个键的值</p>
+<p>  <code>hlen key-name</code>         –返回键值对数量</p>
+<p>  <code>hexist key-name key</code>     – 检查散列中是否存在该键</p>
+<p>  <code>hkeys key-name</code>    –返回所有键</p>
+<p>  <code>hvals key-name</code>    –返回所有值</p>
+<p>  <code>hgetall key-name</code>   –返回所有键值对</p>
+<p>  <code>hincrby key-name key increment</code> –将 key 的值加上整数 increment</p>
+<p>  <code>hincrbyfloat key-name key increment</code>   –  将 key 的值加上浮点数 increment</p>
+</li>
+</ol>
+<hr>
+<ol start="5">
+<li><h3 id="ZSET（有序集合）"><a href="#ZSET（有序集合）" class="headerlink" title="ZSET（有序集合）"></a>ZSET（有序集合）</h3><p>   储存键值对；<br>   <strong>键</strong> 被称为 <strong>成员</strong>（member），每个成员各不相同；<br>   <strong>值</strong> 被称为 <strong>分值</strong> （score），必须为 <strong>浮点数</strong>。<br>   可以根据成员访问元素，也可以根据分值以及分值的排列顺序来访问元素的结构。</p>
+<h4 id="增：-4"><a href="#增：-4" class="headerlink" title="增："></a>增：</h4><p>  <code>zadd key-name score member</code>             – 注意，分值在前；返回 1 成功；0 失败（已存在）</p>
+<h4 id="删：-4"><a href="#删：-4" class="headerlink" title="删："></a>删：</h4><p>  <code>hrem key-name member</code>                 – 返回 1 成功；0 失败（不存在）</p>
+<p>  <code>zremrangebyrank key-name min max</code>   –删除介于此排名之间的所有成员</p>
+<p>  <code>zremrangebyscore key-name min max</code>   –删除介于此分值之间的所有成员</p>
+<h4 id="查：-4"><a href="#查：-4" class="headerlink" title="查："></a>查：</h4><p>   <code>zcard key-name</code>  –返回有序集合中包含的成员数量</p>
+<p>   <code>zrange key-name start end [withscores]</code>      – 根据元素在有序排列中所处的位置（从小到大），获取多个元素，可以选择是否带分值一起返回</p>
+<p>   <code>zrevrange key-name start end [withscores]</code>      – 根据元素在有序排列中所处的位置（从大到小），获取多个元素，可以选择是否带分值一起返回</p>
+<p>   <code>zrangebyscores key-name min max [withscores]</code> – 获取有序集合在给定分支范围内的所有元素，从小到大排</p>
+<p>   <code>zrevrangebyscores key-name max min [withscores]</code> – 获取有序集合在给定分支范围内的所有元素,从大到小排</p>
+<p>   <code>zcount key-name min max</code>   –返回[ min， max]之间的成员数量</p>
+<p>   <code>zrank key-name member</code> –返回成员 member 的排名，按分值从小到大排名</p>
+<p>   <code>zrevrank key-name member</code> –返回成员 member 的排名，按分值从大到小排名</p>
+<p>   <code>zscore key-name member</code>–返回成员的分值</p>
+<h4 id="改：-3"><a href="#改：-3" class="headerlink" title="改："></a>改：</h4><p>  <code>zincrby key increment member</code> –将成员的分值加上 increment</p>
+<h4 id="其他：-1"><a href="#其他：-1" class="headerlink" title="其他："></a>其他：</h4><h5 id="并集运算"><a href="#并集运算" class="headerlink" title="并集运算"></a>并集运算</h5><p>  <code>zunionstore dest-key key-count key [key...] [weight [weight..]] [sum|min|max]</code>– 默认为sum，合并的时候将分值相加，结果存在 dest-key 中 ，key-count 指定 key 的数量。</p>
+<h5 id="交集运算：-1"><a href="#交集运算：-1" class="headerlink" title="交集运算："></a>交集运算：</h5><p>  <code>zinterstore dest-key key-count key [key...] [weight [weight..]] [sum|min|max]</code>– 默认为sum，合并的时候将分值相加，结果存在 dest-key 中 ，key-count 指定 key 的数量。</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://scu-scst-sast-mr.github.io/2020/02/05/redis-db/" data-id="ck6xs82zw000aaco2d9xxd7p9" class="article-share-link">分享</a>
+      
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Redis/" rel="tag">Redis</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/08/vue/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          VUE 入门攻略
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/02/05/guide/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">多终端更新本博客向导</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">作者</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angel-zou/">Angel_zou</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/evlpsrfc/">evlpsrfc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lengyubingcheng/">lengyubingcheng</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/" rel="tag">图像修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E5%8C%BA/" rel="tag">工作区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%89%E5%8C%BA/" rel="tag">选区</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/" style="font-size: 10px;">图像修复</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E5%8C%BA/" style="font-size: 10px;">工作区</a> <a href="/tags/%E9%80%89%E5%8C%BA/" style="font-size: 10px;">选区</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/22/PS%E5%B0%8F%E8%AF%BE%E5%A0%82%E3%81%AE%E7%AC%AC%E4%B8%80%E8%AE%B2/">PS小课堂の第一讲</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/08/vue/">VUE 入门攻略</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/05/redis-db/">Redis 数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/05/guide/">多终端更新本博客向导</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 苏大计科科协科研部<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>

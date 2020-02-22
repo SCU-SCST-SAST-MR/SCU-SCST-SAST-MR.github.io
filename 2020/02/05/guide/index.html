@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>多终端更新本博客向导 | 苏大计科科协科研部</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="前言本博客页面使用 Hexo 框架搭建，一切操作都基于 Hexo 。 在操作之前需要确保环境（Node.js、Git、Hexo、hexo-deployer-git）已经配置完毕。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="多终端更新本博客向导">
+<meta property="og:url" content="http://scu-scst-sast-mr.github.io/2020/02/05/guide/index.html">
+<meta property="og:site_name" content="苏大计科科协科研部">
+<meta property="og:description" content="前言本博客页面使用 Hexo 框架搭建，一切操作都基于 Hexo 。 在操作之前需要确保环境（Node.js、Git、Hexo、hexo-deployer-git）已经配置完毕。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-02-05T06:55:47.000Z">
+<meta property="article:modified_time" content="2020-02-22T15:34:18.749Z">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="苏大计科科协科研部" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">苏大计科科协科研部</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://SCU-SCST-SAST-MR.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-guide" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/02/05/guide/" class="article-date">
+  <time datetime="2020-02-05T06:55:47.000Z" itemprop="datePublished">2020-02-05</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/evlpsrfc/">evlpsrfc</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      多终端更新本博客向导
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本博客页面使用 Hexo 框架搭建，一切操作都基于 Hexo 。</p>
+<p>在操作之前需要确保环境（Node.js、Git、Hexo、hexo-deployer-git）已经配置完毕。</p>
+<a id="more"></a>
+
+<h2 id="配置方法"><a href="#配置方法" class="headerlink" title="配置方法"></a>配置方法</h2><p>首先将博客必要文件 pull 到本地（注意 clone 的 branch 是 hexo 而不是 master）</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:SCU-SCST-SAST-MR&#x2F;SCU-SCST-SAST-MR.github.io.git -b hexo</span><br></pre></td></tr></table></figure>
+
+<p>然后进入 clone 下来的文件夹</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd SCU-SCST-SAST-MR.github.io</span><br></pre></td></tr></table></figure>
+
+<p>最后安装必要的组件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+
+<h2 id="更新方法"><a href="#更新方法" class="headerlink" title="更新方法"></a>更新方法</h2><p>首先同步仓库文件</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull origin hexo</span><br></pre></td></tr></table></figure>
+
+<p>然后按常规操作更新博客</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"># hexo n &quot;blog-name&quot;</span><br></pre></td></tr></table></figure>
+
+<p>然后将更新后的文件进行同步</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add source&#x2F;</span><br><span class="line">git commit -m &quot;update blog by xx&quot;</span><br><span class="line">git push origin hexo</span><br></pre></td></tr></table></figure>
+
+<p>最后部署博客即可</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://scu-scst-sast-mr.github.io/2020/02/05/guide/" data-id="ck6xs82za0000aco2616g6j4c" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/02/05/redis-db/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Redis 数据结构
+        
+      </div>
+    </a>
+  
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">作者</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Angel-zou/">Angel_zou</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/evlpsrfc/">evlpsrfc</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/lengyubingcheng/">lengyubingcheng</a><span class="category-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget">
+      <ul class="tag-list" itemprop="keywords"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Redis/" rel="tag">Redis</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue/" rel="tag">vue</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/web/" rel="tag">web</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/" rel="tag">图像修复</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E5%B7%A5%E4%BD%9C%E5%8C%BA/" rel="tag">工作区</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/%E9%80%89%E5%8C%BA/" rel="tag">选区</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/Redis/" style="font-size: 10px;">Redis</a> <a href="/tags/vue/" style="font-size: 10px;">vue</a> <a href="/tags/web/" style="font-size: 10px;">web</a> <a href="/tags/%E5%9B%BE%E5%83%8F%E4%BF%AE%E5%A4%8D/" style="font-size: 10px;">图像修复</a> <a href="/tags/%E5%B7%A5%E4%BD%9C%E5%8C%BA/" style="font-size: 10px;">工作区</a> <a href="/tags/%E9%80%89%E5%8C%BA/" style="font-size: 10px;">选区</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">二月 2020</a><span class="archive-list-count">4</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/02/22/PS%E5%B0%8F%E8%AF%BE%E5%A0%82%E3%81%AE%E7%AC%AC%E4%B8%80%E8%AE%B2/">PS小课堂の第一讲</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/08/vue/">VUE 入门攻略</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/05/redis-db/">Redis 数据结构</a>
+          </li>
+        
+          <li>
+            <a href="/2020/02/05/guide/">多终端更新本博客向导</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 苏大计科科协科研部<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
